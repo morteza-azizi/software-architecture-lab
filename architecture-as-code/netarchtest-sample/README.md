@@ -1,6 +1,6 @@
 # Clean Architecture Sample with NetArchTest
 
-A .NET 9 sample demonstrating **Clean Architecture** with automated validation using **NetArchTest**.
+A .NET 10 sample demonstrating **Clean Architecture** with automated validation using **NetArchTest**.
 
 ## Architecture Overview
 
@@ -25,7 +25,7 @@ A .NET 9 sample demonstrating **Clean Architecture** with automated validation u
 
 ## Getting Started
 
-Requires [.NET 9 SDK](https://dotnet.microsoft.com/download).
+Requires [.NET 10 SDK](https://dotnet.microsoft.com/download).
 
 ```bash
 cd architecture-as-code/netarchtest-sample
@@ -60,6 +60,10 @@ The `NetArchTestSample.ArchitectureTests` project contains 15 tests in `Architec
 ### Domain Rules
 
 - Domain service interfaces must only expose async methods (custom `AsyncMethodRule`)
+
+## Related Article
+
+- [Enforce Architectural Rules with Tests using NetArchTest](https://www.mortezaazizi.com/posts/netarchtest-enforce-architectural-rules-with-tests/)
 
 ## Resources
 
