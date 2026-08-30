@@ -1,10 +1,8 @@
 # Clean Architecture Sample with NetArchTest
 
-A comprehensive .NET 9 sample demonstrating **Clean Architecture** principles with automated architectural validation using **NetArchTest**.
+A .NET 9 sample demonstrating **Clean Architecture** with automated validation using **NetArchTest**.
 
 ## Architecture Overview
-
-This sample implements Clean Architecture with four distinct layers:
 
 ```
 ┌─────────────────────────────────────────┐
@@ -19,43 +17,49 @@ This sample implements Clean Architecture with four distinct layers:
 ```
 
 ### Dependency Flow
-- **Domain**: No dependencies (core business logic)
-- **Data**: Depends only on Domain (data access)
-- **Infrastructure**: Depends only on Domain (business services)
-- **API**: Depends on Domain interfaces only (presentation layer)
 
-## Key Features
+- **Domain** — no dependencies (core business logic)
+- **Data** — depends only on Domain (data access)
+- **Infrastructure** — depends only on Domain (business services)
+- **API** — depends on Domain interfaces only (presentation layer)
 
-```mermaid
-mindmap
-  root((Clean Architecture Sample))
-    Architectural Layers
-      Domain Layer
-        Rich Domain Model
-        Business Rules
-        Interface Segregation
-      Infrastructure Layer
-        Business Services
-        Dependency Injection
-      Data Layer
-        Repository Pattern
-        Unit of Work
-      API Layer
-        RESTful Endpoints
-        Controller Logic
-    Architecture Validation
-      15 Comprehensive Tests
-      Custom Rules
+## Getting Started
+
+Requires [.NET 9 SDK](https://dotnet.microsoft.com/download).
+
+```bash
+cd architecture-as-code/netarchtest-sample
+dotnet build NetArchTestSample.sln
+dotnet test NetArchTestSample.sln
+```
+
+Run the API:
+
+```bash
+dotnet run --project NetArchTestSample.Api
 ```
 
 ## Architecture Tests
 
-The `NetArchTestSample.ArchitectureTests` project contains comprehensive tests that automatically validate:
+The `NetArchTestSample.ArchitectureTests` project contains 15 tests in `ArchitecturalRules.cs`.
 
 ### Dependency Rules
+
+- Domain must not depend on Infrastructure, Data, or API
+- Infrastructure must not depend on API
+- Data must not depend on Infrastructure or API
+- Controllers must not depend on Infrastructure or Data
+
 ### Structural Rules
+
+- Repository classes must live in `Data.Repositories`
+- Service classes must live in `Infrastructure.Services`
+- Controllers, services, and repositories must be sealed
+- Interfaces must start with `I`
+
 ### Domain Rules
 
+- Domain service interfaces must only expose async methods (custom `AsyncMethodRule`)
 
 ## Resources
 
